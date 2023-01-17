@@ -23,11 +23,11 @@ create table if not exists category (
 
 alter table product add constraint fk_category foreign key (category_id) references category(category_id);
 
-insert into category values (1, 'Food', now(), null, null);
-insert into category values (2, 'Other', now(), null, null);
+insert into category(name, created_at, updated_at, deleted_at) values ('Food', now(), null, null);
+insert into category(name, created_at, updated_at, deleted_at) values ('Other', now(), null, null);
 
-insert into product values (1, 'Hamburger', 5.99, 'link/to/image/hamburger', true, now(), null, null, 1);
-insert into product values (2, 'Corn', 2, 'link/to/image/corn', true, now(), null, null, 1);
-insert into product values (3, 'Bean', 1.99, 'link/to/image/bean', false, now(), null, null, 1);
-insert into product values (4, 'HDMI cable', 15.79, 'link/to/image/hdmi-cable', true, now(), null, null, 2);
-insert into product values (5, 'Sun screen', 3.29, 'link/to/image/sun-screen', true, now(), null, null, 2);
+insert into product(name, price, image, is_in_stock, created_at, updated_at, deleted_at, category_id) values ('Hamburger', 5.99, 'link/to/image/hamburger', true, now(), null, null, 1);
+insert into product(name, price, image, is_in_stock, created_at, updated_at, deleted_at, category_id) values ('Corn', 2, 'link/to/image/corn', true, now(), null, null, 1);
+insert into product(name, price, image, is_in_stock, created_at, updated_at, deleted_at, category_id) values ('Bean', 1.99, 'link/to/image/bean', false, now(), null, null, 1);
+insert into product(name, price, image, is_in_stock, created_at, updated_at, deleted_at, category_id) values ('HDMI cable', 15.79, 'link/to/image/hdmi-cable', true, now(), null, null, 2);
+insert into product(name, price, image, is_in_stock, created_at, updated_at, deleted_at, category_id) values ('Sun screen', 3.29, 'link/to/image/sun-screen', true, now(), null, null, 2);

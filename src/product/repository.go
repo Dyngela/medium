@@ -52,7 +52,7 @@ func createProductRepo(product Product, c *gin.Context) (string, error) {
 		return "Error while creating your product", err
 	}
 
-	query := `insert into product values (null, $1, $2, $3, $4, now(), null, null, $5);`
+	query := `insert into product(name, price, image, is_in_stock, created_at, category_id) values ($1, $2, $3, $4, now(), $5);`
 	_, err = conn.Query(c, query,
 		product.Name,
 		product.Price,
@@ -87,13 +87,13 @@ func updateProductRepo(product Product, c *gin.Context) (string, error) {
 	}
 
 	query := `update product
-				SET name = $2
-				SET price = $3
-				SET image = $4
-				SET is_in_stock = $5
-				SET category_id = $6
-				SET updated_at = now()
-				where product_id = $7`
+				SET name = $1,
+				price = $2,
+				image = $3,
+				is_in_stock = $4,
+				category_id = $5,
+				updated_at = now()
+				where product_id = $6`
 	_, err = conn.Query(c, query,
 		product.Name,
 		product.Price,

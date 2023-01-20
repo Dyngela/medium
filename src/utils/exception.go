@@ -10,7 +10,7 @@ import (
 func CheckForError(err *error, message string) {
 	if err != nil {
 		log.Println(message)
-		log.Println(err)
+		log.Println(*err)
 	}
 }
 

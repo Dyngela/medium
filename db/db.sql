@@ -21,6 +21,14 @@ create table if not exists category (
     deleted_at date
 );
 
+create type role as enum ('admin', 'user');
+create table if not exists users (
+                                     user_id serial primary key,
+                                     user_role role,
+                                     email varchar(255),
+                                     password varchar(255)
+);
+
 alter table product add constraint fk_category foreign key (category_id) references category(category_id);
 
 insert into category(name, created_at, updated_at, deleted_at) values ('Food', now(), null, null);
